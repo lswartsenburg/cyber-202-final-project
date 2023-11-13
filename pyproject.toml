@@ -15,6 +15,7 @@ authors = [
     { name = "Christopher Black", email = "christopherblack@ischool.berkeley.edu" },
     { name = "Lucas Swartsenburg", email = "lswartsenburg@ischool.berkeley.edu" },
 ]
+dependencies = ['importlib_resources==6.1.1']
 
 [project.scripts]
 cipher-algorithms = "cipher_algorithms.main:main"
@@ -22,8 +23,8 @@ cipher-algorithms = "cipher_algorithms.main:main"
 [tool.setuptools]
 include-package-data = true
 
-[tool.setuptools.packages.find]
-where = ["cipher_algorithms"]
+# [tool.setuptools.packages.find]
+# where = ["."]
 
-# [tool.setuptools.package-data]
-# myModule = ["cipeher_algorithms/10000words.txt"]
+[tool.setuptools.package-data]
+"*" = ["*.txt"]

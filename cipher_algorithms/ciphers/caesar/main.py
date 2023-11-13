@@ -1,6 +1,6 @@
-from ciphers import cipher_abc
+from cipher_algorithms.ciphers import cipher_abc
 from . import algo
-from helpers import dictionary
+from cipher_algorithms.helpers import dictionary
 
 
 class Caesar(cipher_abc.Cipher):

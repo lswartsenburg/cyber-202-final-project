@@ -1,5 +1,5 @@
 import argparse
-from ciphers.caesar.main import Caesar
+from cipher_algorithms.ciphers.caesar.main import Caesar
 
 
 ciphers = {"caesar": Caesar}
