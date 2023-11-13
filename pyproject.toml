@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cipher_algorithms"
+version = "0.0.1"
+description = "A collections of cipher algorithms"
+readme = "README.md"
+requires-python = ">=3.8,<4.0"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Dante Terminella", email = "dterm@ischool.berkeley.edu" },
+    { name = "Osman Sharaf", email = "sharafosman@ischool.berkeley.edu" },
+    { name = "Christopher Black", email = "christopherblack@ischool.berkeley.edu" },
+    { name = "Lucas Swartsenburg", email = "lswartsenburg@ischool.berkeley.edu" },
+]
+
+[project.scripts]
+cipher-algorithms = "cipher_algorithms.main:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["cipher_algorithms"]
+
+# [tool.setuptools.package-data]
+# myModule = ["cipeher_algorithms/10000words.txt"]
