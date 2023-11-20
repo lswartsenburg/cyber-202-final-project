@@ -5,3 +5,4 @@ apispec
 marshmallow
 apispec_webframeworks
 .
+flask-openapi3
