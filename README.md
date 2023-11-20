@@ -26,3 +26,7 @@ python cipher_algorithms/main.py caesar break --cipher "WHVWCWKLVCPHVVDJH"
 
 ### Testing
 Add tests to the `tests` folder in the root. Run `pytest tests` to execute all tests.
+
+### Example of adding a new algorithm
+This is an example commit of adding a new algorithm to the library:
+https://github.com/lswartsenburg/cyber-202-final-project/commit/545d038b5d37635964a72c698fb3d4c188bf5a82
