@@ -1,4 +1,7 @@
 gunicorn==20.1.0
 flask>=2.1.0
 flasgger
+apispec
+marshmallow
+apispec_webframeworks
 .
