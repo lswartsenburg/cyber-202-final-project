@@ -1,8 +1,9 @@
 import argparse
 from cipher_algorithms.ciphers.caesar.cli import Caesar
+from cipher_algorithms.ciphers.vigenere.cli import Vigenere
 
 
-active_ciphers = {"caesar": Caesar}
+active_ciphers = {"caesar": Caesar, "vigenere": Vigenere}
 
 
 def main():
