@@ -18,7 +18,7 @@ authors = [
 dependencies = ['importlib_resources==6.1.1']
 
 [project.scripts]
-cipher-algorithms = "cipher_algorithms.main:main"
+cipher-algorithms = "cipher_algorithms.cli:main"
 
 [tool.setuptools]
 include-package-data = true

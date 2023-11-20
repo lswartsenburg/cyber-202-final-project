@@ -18,7 +18,7 @@ class Caesar(cipher_abc.Cipher):
             operation=algo.Operation.ENCRYPT,
             shift=shift,
         )
-        print(f"Message {message} encrypted to {cipher}")
+        print(f"The message {message} encrypted to {cipher}")
 
     def decrypt(cipher, shift):
         message = algo.caesar_cipher(

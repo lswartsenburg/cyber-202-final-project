@@ -1,8 +1,8 @@
 import argparse
-from cipher_algorithms.ciphers.caesar.main import Caesar
+from cipher_algorithms.ciphers.caesar.cli import Caesar
 
 
-ciphers = {"caesar": Caesar}
+active_ciphers = {"caesar": Caesar}
 
 
 def main():
@@ -15,7 +15,7 @@ def main():
     subparsers = parser.add_subparsers(help="sub-command help", dest="cipher")
     subparsers.required = True
 
-    for sub_parser_name, cipher in ciphers.items():
+    for sub_parser_name, cipher in active_ciphers.items():
         sub_parser = subparsers.add_parser(
             sub_parser_name,
             help=f"Help text for the {sub_parser_name} cipher",
@@ -27,7 +27,3 @@ def main():
 
     cipher = args.cipher_class
     cipher(args)
-
-
-if __name__ == "__main__":
-    main()
