@@ -3,8 +3,8 @@ import pytest
 from cipher_algorithms.ciphers.caesar.algo import (
     caesar_cipher,
     Operation,
-    InvalidCharacterException,
 )
+from cipher_algorithms.helpers.char_conversion_27 import InvalidCharacterException
 
 
 def test_encrypt_valid_messages():

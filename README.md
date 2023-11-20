@@ -23,3 +23,6 @@ pip3 install .
 ```
 python cipher_algorithms/main.py caesar break --cipher "WHVWCWKLVCPHVVDJH"
 ```
+
+### Testing
+Add tests to the `tests` folder in the root. Run `pytest tests` to execute all tests.
