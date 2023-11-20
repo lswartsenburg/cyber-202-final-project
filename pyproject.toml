@@ -24,8 +24,5 @@ cipher-algorithms = "cipher_algorithms.cli:main"
 include-package-data = true
 packages = ["cipher_algorithms"]
 
-# [tool.setuptools.packages.find]
-# where = ["."]
-
 [tool.setuptools.package-data]
 "*" = ["*.txt"]
