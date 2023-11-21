@@ -1,48 +1,61 @@
-from flask import Blueprint, Flask, jsonify
+from flask_openapi3 import Tag
+from flask_openapi3 import APIBlueprint
+from pydantic import BaseModel
 
-from flasgger import APISpec, Schema, Swagger, fields
+from cipher_algorithms.ciphers.vigenere.algo import vigenere, Operation
+from cipher_algorithms.helpers.char_conversion_27 import InvalidCharacterException
 
-vigenere_blueprint = Blueprint("vigenere", __name__, url_prefix="/vigenere")
-
-
-class VigenereEncryptSchema(Schema):
-    message = fields.Str(required=True)
-    shift = fields.Int(required=True)
+vigenere_blueprint = APIBlueprint("vigenere", __name__, url_prefix="/vigenere")
 
 
-class VigenereDecryptSchema(Schema):
-    cipher = fields.Str(required=True)
-    shift = fields.Int(required=True)
+tag = Tag(
+    name="Vigenere cipher", description="Cipher functions for the Vigenere cipher"
+)
+
+
+class VigenereEncryptSchema(BaseModel):
+    message: str
+    key: str
+
+
+class VigenereDecryptSchema(BaseModel):
+    cipher: str
+    key: str
 
 
 class VigenereResultSchema(VigenereEncryptSchema, VigenereDecryptSchema):
     pass
 
 
-@vigenere_blueprint.route("/encrypt", methods=["POST"])
-def encrypt(body: VigenereEncryptSchema):
-    """Create a cute furry animal endpoint.
-    ---
-    post:
-      description: Encrypt a message using the Caesar cipher with specified shift
-      parameters:
-        - in: body
-          name: body
-          required: True
-          schema:
-            $ref: '#/definitions/CaesarEncrypt'
-      responses:
-        201:
-          description: If encryption succeeded
-          schema:
-            $ref: '#/definitions/CaesarResult'
-    """
-    return "Hello"
+@vigenere_blueprint.post(
+    "/encrypt",
+    tags=[tag],
+    summary="Uses the Vigenere cipher to encrypt a message",
+    responses={200: VigenereResultSchema},
+)
+def vigenere_encrypt(body: VigenereEncryptSchema):
+    try:
+        cipher = vigenere(input=body.message, operation=Operation.ENCRYPT, key=body.key)
+        response = VigenereResultSchema(
+            cipher=cipher, message=body.message, key=body.key
+        )
+        return response.model_dump(), 200
+    except Exception as e:
+        return f"Unexpected error {type(e)}:\n\n{e}", 422
 
 
-def get_vigenere_schemas():
-    return [VigenereEncryptSchema, VigenereDecryptSchema, VigenereResultSchema]
-
-
-def get_vigenere_paths():
-    return [encrypt]
+@vigenere_blueprint.post(
+    "/decrypt",
+    tags=[tag],
+    summary="Uses the Vigenere cipher to decrypt a message",
+    responses={200: VigenereResultSchema},
+)
+def vigenere_decrypt(body: VigenereDecryptSchema):
+    try:
+        message = vigenere(input=body.cipher, operation=Operation.DECRYPT, key=body.key)
+        response = VigenereResultSchema(
+            cipher=body.cipher, message=message, key=body.key
+        )
+        return response.model_dump(), 200
+    except Exception as e:
+        return f"Unexpected error {type(e)}:\n\n{e}", 422

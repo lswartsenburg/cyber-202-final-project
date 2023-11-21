@@ -1,60 +1,27 @@
-from flask import Flask, jsonify
-from cipher_algorithms.ciphers.caesar.algo import caesar_cipher, Operation
-from flasgger import APISpec, Schema, Swagger, fields
-from apispec_webframeworks.flask import FlaskPlugin
-from apispec.ext.marshmallow import MarshmallowPlugin
+from flask_openapi3 import Info
+from flask_openapi3 import OpenAPI, APIBlueprint
+from flask import redirect
 
-from ciphers.caesar import caesar_blueprint, get_caesar_schemas, get_caesar_paths
-from ciphers.vigenere import (
+from .ciphers.caesar import caesar_blueprint
+from .ciphers.vigenere import (
     vigenere_blueprint,
-    get_vigenere_schemas,
-    get_vigenere_paths,
 )
 
 
-app = Flask(__name__)
-
-spec = APISpec(
-    title="Cipher Algorithms REST API",
-    version="0.0.1",
-    openapi_version="2.0",
-    plugins=[
-        FlaskPlugin(),
-        MarshmallowPlugin(),
-    ],
-)
+info = Info(title="Cipher Algorithm API", version="0.0.1")
+app = OpenAPI(__name__, info=info, doc_prefix="/docs", swagger_url="/")
+v1_api = APIBlueprint("api/v1", __name__, url_prefix="/api/v1")
+ciphers = APIBlueprint("ciphers", __name__, url_prefix="/ciphers")
 
 
-@app.route("/hello")
-def hello_world():
-    return caesar_cipher("HELLO WORLD", Operation.ENCRYPT, shift=1)
+@app.route("/")
+def homepage():
+    return redirect("docs")
 
 
-swagger_config = {
-    "headers": [],
-    "specs": [
-        {
-            "endpoint": "apispec",
-            "route": "/apispec.json",
-            "rule_filter": lambda rule: True,  # all in
-            "model_filter": lambda tag: True,  # all in
-        }
-    ],
-    "static_url_path": "/flasgger_static",
-    # "static_folder": "static",  # must be set by user
-    "specs_route": "/",
-    "hide_top_bar": True,
-}
+ciphers.register_api(caesar_blueprint)
+ciphers.register_api(vigenere_blueprint)
 
-template = spec.to_flasgger(app)
 
-swag = Swagger(
-    app,
-    template=template,
-    config=swagger_config,
-)
-
-app.register_blueprint(caesar_blueprint)
-app.register_blueprint(vigenere_blueprint)
-
-app.run(debug=True, port=5001)
+v1_api.register_api(ciphers)
+app.register_api(v1_api)
