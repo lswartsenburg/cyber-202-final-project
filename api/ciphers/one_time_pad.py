@@ -35,10 +35,10 @@ class OneTimePadResultSchema(OneTimePadEncryptSchema, OneTimePadDecryptSchema):
 @one_time_pad_blueprint.post(
     "/encrypt",
     tags=[tag],
-    summary="Uses the Vigenere cipher to encrypt a message",
+    summary="Uses the One Time Pad cipher to encrypt a message",
     responses={200: OneTimePadResultSchema, 422: ExceptionSchema},
 )
-def vigenere_encrypt(body: OneTimePadEncryptSchema):
+def one_time_pad_encrypt(body: OneTimePadEncryptSchema):
     cipher = one_time_pad(input=body.message, key_with_spaces=body.key)
     response = OneTimePadResultSchema(cipher=cipher, message=body.message, key=body.key)
     return response.model_dump(), 200
@@ -47,10 +47,10 @@ def vigenere_encrypt(body: OneTimePadEncryptSchema):
 @one_time_pad_blueprint.post(
     "/decrypt",
     tags=[tag],
-    summary="Uses the Vigenere cipher to decrypt a message",
+    summary="Uses the One Time Pad cipher to decrypt a message",
     responses={200: OneTimePadResultSchema, 422: ExceptionSchema},
 )
-def vigenere_decrypt(body: OneTimePadDecryptSchema):
+def one_time_pad_decrypt(body: OneTimePadDecryptSchema):
     message = one_time_pad(input=body.cipher, key_with_spaces=body.key)
     response = OneTimePadResultSchema(cipher=body.cipher, message=message, key=body.key)
 
