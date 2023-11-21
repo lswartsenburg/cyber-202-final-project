@@ -1,0 +1,4 @@
+gunicorn==20.1.0
+flask>=2.1.0
+.
+flask-openapi3

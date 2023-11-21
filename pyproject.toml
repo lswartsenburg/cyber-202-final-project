@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cipher_algorithms"
+name = "cipher-algorithms"
 version = "0.0.1"
 description = "A collections of cipher algorithms"
 readme = "README.md"
@@ -22,9 +22,7 @@ cipher-algorithms = "cipher_algorithms.cli:main"
 
 [tool.setuptools]
 include-package-data = true
-
-# [tool.setuptools.packages.find]
-# where = ["."]
+packages = ["cipher_algorithms"]
 
 [tool.setuptools.package-data]
 "*" = ["*.txt"]
