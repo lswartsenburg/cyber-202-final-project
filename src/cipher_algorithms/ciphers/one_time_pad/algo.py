@@ -1,10 +1,4 @@
-from enum import Enum
 from cipher_algorithms.helpers.char_conversion_27 import InvalidCharacterException
-
-
-class Operation(Enum):
-    ENCRYPT = "encrypt"
-    DECRYPT = "decrypt"
 
 
 def one_time_pad_char(input, key):
