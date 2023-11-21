@@ -5,6 +5,7 @@ from flask_openapi3 import OpenAPI, APIBlueprint
 from flask import redirect
 
 from .ciphers.caesar import caesar_blueprint
+from .ciphers.one_time_pad import one_time_pad_blueprint
 from .ciphers.vigenere import (
     vigenere_blueprint,
 )
@@ -50,6 +51,7 @@ def homepage():
 
 ciphers.register_api(caesar_blueprint)
 ciphers.register_api(vigenere_blueprint)
+ciphers.register_api(one_time_pad_blueprint)
 
 
 v1_api.register_api(ciphers)

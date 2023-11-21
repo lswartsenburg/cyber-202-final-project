@@ -26,5 +26,6 @@ include-package-data = true
 [tool.setuptools.packages.find]
 where = ["./src"]
 
+
 [tool.setuptools.package-data]
 "*" = ["*.txt"]
