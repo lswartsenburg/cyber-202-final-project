@@ -53,7 +53,12 @@ def caesar_encrypt(body: CaesarEncryptSchema):
         return f"Unexpected error {type(e)}:\n\n{e}", 422
 
 
-@caesar_blueprint.post("/decrypt", tags=[tag])
+@caesar_blueprint.post(
+    "/decrypt",
+    tags=[tag],
+    summary="Uses the Caesar cipher to decrypt a message",
+    responses={200: CaesarResultSchema},
+)
 def caesar_decrypt(body: CaesarDecryptSchema):
     """
     This is an decryption implementation of the Caesar cipther that accepts only upper case characters and space (27 characters). The
@@ -71,7 +76,12 @@ def caesar_decrypt(body: CaesarDecryptSchema):
         return f"Unexpected error {type(e)}:\n\n{e}", 422
 
 
-@caesar_blueprint.post("/break", tags=[tag])
+@caesar_blueprint.post(
+    "/break",
+    tags=[tag],
+    summary="A somewhat efficient algorithm that breaks a caesar cipher",
+    responses={200: CaesarResultSchema},
+)
 def caesar_break(body: CaesarBreakSchema):
     """
     This implementation uses a word dictionary to break a Caesar cipher
