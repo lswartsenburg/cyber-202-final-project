@@ -10,7 +10,7 @@
             "request": "launch",
             "module": "cipher_algorithms",
             "console": "integratedTerminal",
-            "justMyCode": false,
+            "justMyCode": true,
             "args": ["caesar", "encrypt", "--message", "THIS IS ME", "--shift", "3"]
         },
         {
@@ -24,7 +24,6 @@
             },
             "args": [
                 "run",
-                "--no-debugger",
             ],
             "justMyCode": true
         },
