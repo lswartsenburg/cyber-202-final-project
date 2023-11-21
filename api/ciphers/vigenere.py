@@ -1,9 +1,11 @@
 from flask_openapi3 import Tag
 from flask_openapi3 import APIBlueprint
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from cipher_algorithms.ciphers.vigenere.algo import vigenere, Operation
-from cipher_algorithms.helpers.char_conversion_27 import InvalidCharacterException
+
+from ..common.schemas import ExceptionSchema
+
 
 vigenere_blueprint = APIBlueprint("vigenere", __name__, url_prefix="/vigenere")
 
@@ -14,13 +16,13 @@ tag = Tag(
 
 
 class VigenereEncryptSchema(BaseModel):
-    message: str
-    key: str
+    message: str = Field(json_schema_extra={"example": "THE CAT IS OUT OF THE BAG"})
+    key: str = Field(json_schema_extra={"example": "KOMRADE"})
 
 
 class VigenereDecryptSchema(BaseModel):
-    cipher: str
-    key: str
+    cipher: str = Field(json_schema_extra={"example": "CVQQCDXJWDQOXXJBRQTKIJPMX"})
+    key: str = Field(json_schema_extra={"example": "KOMRADE"})
 
 
 class VigenereResultSchema(VigenereEncryptSchema, VigenereDecryptSchema):
@@ -31,31 +33,22 @@ class VigenereResultSchema(VigenereEncryptSchema, VigenereDecryptSchema):
     "/encrypt",
     tags=[tag],
     summary="Uses the Vigenere cipher to encrypt a message",
-    responses={200: VigenereResultSchema},
+    responses={200: VigenereResultSchema, 422: ExceptionSchema},
 )
 def vigenere_encrypt(body: VigenereEncryptSchema):
-    try:
-        cipher = vigenere(input=body.message, operation=Operation.ENCRYPT, key=body.key)
-        response = VigenereResultSchema(
-            cipher=cipher, message=body.message, key=body.key
-        )
-        return response.model_dump(), 200
-    except Exception as e:
-        return f"Unexpected error {type(e)}:\n\n{e}", 422
+    cipher = vigenere(input=body.message, operation=Operation.ENCRYPT, key=body.key)
+    response = VigenereResultSchema(cipher=cipher, message=body.message, key=body.key)
+    return response.model_dump(), 200
 
 
 @vigenere_blueprint.post(
     "/decrypt",
     tags=[tag],
     summary="Uses the Vigenere cipher to decrypt a message",
-    responses={200: VigenereResultSchema},
+    responses={200: VigenereResultSchema, 422: ExceptionSchema},
 )
 def vigenere_decrypt(body: VigenereDecryptSchema):
-    try:
-        message = vigenere(input=body.cipher, operation=Operation.DECRYPT, key=body.key)
-        response = VigenereResultSchema(
-            cipher=body.cipher, message=message, key=body.key
-        )
-        return response.model_dump(), 200
-    except Exception as e:
-        return f"Unexpected error {type(e)}:\n\n{e}", 422
+    message = vigenere(input=body.cipher, operation=Operation.DECRYPT, key=body.key)
+    response = VigenereResultSchema(cipher=body.cipher, message=message, key=body.key)
+
+    return response.model_dump(), 200
