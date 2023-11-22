@@ -45,10 +45,10 @@ class FractionedMorseResultSchema(
 @fractioned_morse_blueprint.post(
     "/encrypt",
     tags=[tag],
-    summary="Uses the One Time Pad cipher to encrypt a message",
-    responses={200: FractionedMorseDecryptSchema, 422: ExceptionSchema},
+    summary="Uses the Fractioned Morse cipher to encrypt a message",
+    responses={200: FractionedMorseResultSchema, 422: ExceptionSchema},
 )
-def one_time_pad_encrypt(body: FractionedMorseEncryptSchema):
+def fractioned_morse_encrypt(body: FractionedMorseEncryptSchema):
     fractioned_morse = FractionedMorseCipher(key=body.key)
     cipher = fractioned_morse.encrypt(message=body.message)
     response = FractionedMorseResultSchema(
@@ -63,10 +63,10 @@ def one_time_pad_encrypt(body: FractionedMorseEncryptSchema):
 @fractioned_morse_blueprint.post(
     "/decrypt",
     tags=[tag],
-    summary="Uses the One Time Pad cipher to decrypt a message",
-    responses={200: FractionedMorseDecryptSchema, 422: ExceptionSchema},
+    summary="Uses the Fractioned Morse cipher to decrypt a message",
+    responses={200: FractionedMorseResultSchema, 422: ExceptionSchema},
 )
-def one_time_pad_decrypt(body: FractionedMorseDecryptSchema):
+def fractioned_morse_decrypt(body: FractionedMorseDecryptSchema):
     fractioned_morse = FractionedMorseCipher(key=body.key)
     message = fractioned_morse.decrypt(cipher=body.cipher)
     response = FractionedMorseResultSchema(

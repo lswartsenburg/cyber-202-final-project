@@ -3,13 +3,16 @@ from cipher_algorithms.ciphers.caesar.cli import Caesar
 from cipher_algorithms.ciphers.vigenere.cli import Vigenere
 from cipher_algorithms.ciphers.one_time_pad.cli import OneTimePad
 from cipher_algorithms.ciphers.fractioned_morse.cli import FractionalMorseCLI
-
+from cipher_algorithms.ciphers.mono_alphabetic_substitution.cli import (
+    MonoAlphabeticSubstitutionCLI,
+)
 
 active_ciphers = {
     "caesar": Caesar,
     "vigenere": Vigenere,
     "one_time_pad": OneTimePad,
     "fractioned_morse": FractionalMorseCLI,
+    "mono_alphabetic_substitution": MonoAlphabeticSubstitutionCLI,
 }
 
 
