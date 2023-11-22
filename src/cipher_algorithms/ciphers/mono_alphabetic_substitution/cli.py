@@ -55,13 +55,13 @@ class MonoAlphabeticSubstitutionCLI(cipher_abc.Cipher):
         subparsers.required = True
 
         encrypt_parser = subparsers.add_parser(
-            "encrypt", help="Encrypt MonoAlphabeticSubstitution cipher help"
+            "encrypt", help="Encrypt Mono-alphabetic Substitution cipher help"
         )
         encrypt_parser.set_defaults(operation="encrypt")
         MonoAlphabeticSubstitutionCLI.encrypt_arg_parser(encrypt_parser)
 
         decrypt_parser = subparsers.add_parser(
-            "decrypt", help="Decrypt MonoAlphabeticSubstitution cipher help"
+            "decrypt", help="Decrypt Mono-alphabetic Substitution cipher help"
         )
         decrypt_parser.set_defaults(operation="decrypt")
         MonoAlphabeticSubstitutionCLI.decrypt_arg_parser(decrypt_parser)
