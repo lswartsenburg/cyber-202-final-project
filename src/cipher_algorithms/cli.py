@@ -6,6 +6,10 @@ from cipher_algorithms.ciphers.fractioned_morse.cli import FractionalMorseCLI
 from cipher_algorithms.ciphers.mono_alphabetic_substitution.cli import (
     MonoAlphabeticSubstitutionCLI,
 )
+from cipher_algorithms.ciphers.homophonic_substitution.cli import (
+    HomophonicSubstitutionCLI,
+)
+
 
 active_ciphers = {
     "caesar": Caesar,
@@ -13,6 +17,7 @@ active_ciphers = {
     "one_time_pad": OneTimePad,
     "fractioned_morse": FractionalMorseCLI,
     "mono_alphabetic_substitution": MonoAlphabeticSubstitutionCLI,
+    "homophonic_substitution": HomophonicSubstitutionCLI,
 }
 
 
