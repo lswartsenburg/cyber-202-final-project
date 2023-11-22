@@ -25,8 +25,8 @@ def test_decrypt_valid_messages():
     mono_alphabetic_substitution = MonoAlphabeticSubstitution(key=DEFAULT_CHARS[::-1])
     assert (
         mono_alphabetic_substitution.decrypt(
-            cipher="IKUOKUBDZIKTCZQOAIFEIHPLKSAZCTHAMECTQXCZVNLUIWVMLGTG"
-        )["message"]
+            cipher="MLYLWB TLVH GSVIV ZMB NLIV YVXZFHV RGH GLL XILDWVW"
+        )
         == "NOBODY GOES THERE ANY MORE BECAUSE ITS TOO CROWDED"
     )
 

@@ -52,12 +52,12 @@ class MonoAlphabeticSubstitutionResultSchema(
     responses={200: MonoAlphabeticSubstitutionResultSchema, 422: ExceptionSchema},
 )
 def mono_alphabetic_substitution_encrypt(body: MonoAlphabeticSubstitutionEncryptSchema):
-    fractioned_morse = MonoAlphabeticSubstitution(key=body.key)
-    cipher = fractioned_morse.encrypt(message=body.message)
+    mono_alphabetic_substitution = MonoAlphabeticSubstitution(key=body.key)
+    cipher = mono_alphabetic_substitution.encrypt(message=body.message)
     response = MonoAlphabeticSubstitutionResultSchema(
         cipher=cipher,
         message=body.message,
-        key="".join(fractioned_morse.key),
+        key="".join(mono_alphabetic_substitution.key),
     )
     return response.model_dump(), 200
 
