@@ -7,6 +7,7 @@ from flask import redirect
 from .ciphers.caesar import caesar_blueprint
 from .ciphers.one_time_pad import one_time_pad_blueprint
 from .ciphers.fractioned_morse import fractioned_morse_blueprint
+from .ciphers.mono_alphabetic_substitution import mono_alphabetic_substitution_blueprint
 from .ciphers.vigenere import (
     vigenere_blueprint,
 )
@@ -54,6 +55,7 @@ ciphers.register_api(caesar_blueprint)
 ciphers.register_api(vigenere_blueprint)
 ciphers.register_api(one_time_pad_blueprint)
 ciphers.register_api(fractioned_morse_blueprint)
+ciphers.register_api(mono_alphabetic_substitution_blueprint)
 
 
 v1_api.register_api(ciphers)
