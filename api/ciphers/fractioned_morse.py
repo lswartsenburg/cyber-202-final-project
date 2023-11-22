@@ -46,7 +46,7 @@ class FractionedMorseResultSchema(
     "/encrypt",
     tags=[tag],
     summary="Uses the One Time Pad cipher to encrypt a message",
-    responses={200: FractionedMorseDecryptSchema, 422: ExceptionSchema},
+    responses={200: FractionedMorseResultSchema, 422: ExceptionSchema},
 )
 def one_time_pad_encrypt(body: FractionedMorseEncryptSchema):
     fractioned_morse = FractionedMorseCipher(key=body.key)
@@ -64,7 +64,7 @@ def one_time_pad_encrypt(body: FractionedMorseEncryptSchema):
     "/decrypt",
     tags=[tag],
     summary="Uses the One Time Pad cipher to decrypt a message",
-    responses={200: FractionedMorseDecryptSchema, 422: ExceptionSchema},
+    responses={200: FractionedMorseResultSchema, 422: ExceptionSchema},
 )
 def one_time_pad_decrypt(body: FractionedMorseDecryptSchema):
     fractioned_morse = FractionedMorseCipher(key=body.key)
