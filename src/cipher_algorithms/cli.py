@@ -1,9 +1,16 @@
 import argparse
 from cipher_algorithms.ciphers.caesar.cli import Caesar
 from cipher_algorithms.ciphers.vigenere.cli import Vigenere
+from cipher_algorithms.ciphers.one_time_pad.cli import OneTimePad
+from cipher_algorithms.ciphers.fractioned_morse.cli import FractionalMorseCLI
 
 
-active_ciphers = {"caesar": Caesar, "vigenere": Vigenere}
+active_ciphers = {
+    "caesar": Caesar,
+    "vigenere": Vigenere,
+    "one_time_pad": OneTimePad,
+    "fractioned_morse": FractionalMorseCLI,
+}
 
 
 def main():
