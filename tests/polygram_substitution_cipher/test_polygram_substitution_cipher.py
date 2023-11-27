@@ -1,7 +1,7 @@
 # Mostly WIP :)
 # test_polygram_substitution_cipher.py
 import pytest
-from your_cipher_module import encrypt, decrypt, UnsupportedCharacterError
+from cipher_algorithms.ciphers.polygram_substitution_cipher.algo import encrypt, decrypt, UnsupportedCharacterError
 
 def test_encrypt_decrypt():
     # Test case for successful encryption and decryption
