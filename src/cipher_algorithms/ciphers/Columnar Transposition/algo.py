@@ -2,7 +2,7 @@
 import math
 
 # encrypt func
-def encryptMessage(msg):
+def encryptMessage(msg, key):
 	cipher = ""
 
 	# track key indices
@@ -36,7 +36,7 @@ def encryptMessage(msg):
 	return cipher
 
 # decrypt func
-def decryptMessage(cipher):
+def decryptMessage(cipher, key):
 	msg = ""
 
 	# track key indices
