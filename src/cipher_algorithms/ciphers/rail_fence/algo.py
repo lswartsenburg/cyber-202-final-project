@@ -110,3 +110,23 @@ def decryptRailFence(cipher, key):
         else:
             row -= 1
     return "".join(result)
+
+
+###Example###
+"""
+key = 3
+msg = "the quick brown fox jumps over the lazy dog"
+print(msg)
+
+cipher = encryptRailFence(msg, key)
+print("Encrypted Message: {}".
+	format(cipher))
+
+print("Decryped Message: {}".
+	format(decryptRailFence(cipher, key)))
+
+ ---outputs the following---
+the quick brown fox jumps over the lazy dog
+Encrypted Message: tqkofjsehadh uc rw o up vrtelz oeibnxmo  yg
+Decryped Message: the quick brown fox jumps over the lazy dog
+"""
