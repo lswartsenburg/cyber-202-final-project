@@ -37,14 +37,15 @@ def decrypt(text, keyword):
 
 
 # Example usage
-try:
-    plaintext = "HELLOWORLD"
-    keyword = "KEY"
-    encrypted_text = encrypt(plaintext, keyword)
-    decrypted_text = decrypt(encrypted_text, keyword)
+if __name__ == "__main__":
+    try:
+        plaintext = "HELLOWORLD"
+        keyword = "KEY"
+        encrypted_text = encrypt(plaintext, keyword)
+        decrypted_text = decrypt(encrypted_text, keyword)
 
-    print(f"Plaintext: {plaintext}")
-    print(f"Encrypted: {encrypted_text}")
-    print(f"Decrypted: {decrypted_text}")
-except CipherError as e:
-    print(f"Error: {e}")
+        print(f"Plaintext: {plaintext}")
+        print(f"Encrypted: {encrypted_text}")
+        print(f"Decrypted: {decrypted_text}")
+    except CipherError as e:
+        print(f"Error: {e}")
