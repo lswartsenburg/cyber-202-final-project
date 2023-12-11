@@ -19,16 +19,14 @@ tag = Tag(
 
 class PolybiusEncryptSchema(BaseModel):
     message: str = Field(
-        json_schema_extra={
-            "example": "NOBODY GOES THERE ANY MORE BECAUSE ITS TOO CROWDED"
-        },
+        json_schema_extra={"example": "the quick brown fox jumps over the lazy dog"},
     )
 
 
 class PolybiusDecryptSchema(BaseModel):
     cipher: str = Field(
         json_schema_extra={
-            "example": "MLYLWB TLVH GSVIV ZMB NLIV YVXZFHV RGH GLL XILDWVW"
+            "example": "44 23 15 41 45 24 13 25 12 42 34 52 33 21 34 53 24 45 32 35 43 34 51 15 42 44 23 15 31 11 55 54 14 34 22"
         }
     )
 

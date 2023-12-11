@@ -37,16 +37,18 @@ def encrypt_polybius(plain_text):
 def decrypt_polybius(cipher_text):
     cipher_text = cipher_text.replace(" ", "")
     square = generate_polybius_square()
+    inv_square = {v: k for k, v in square.items()}
+
     plain_text = ""
 
     for i in range(0, len(cipher_text), 2):
         row = int(cipher_text[i])
         col = int(cipher_text[i + 1])
-        char = square.get((row, col))
+        char = inv_square.get((row, col))
         if char:
             plain_text += char
 
-    return plain_text
+    return plain_text.lower()
 
 
 """
