@@ -19,6 +19,9 @@ from .ciphers.vigenere import vigenere_blueprint
 
 from .common.schemas import ExceptionSchema
 from cipher_algorithms.helpers.char_conversion_27 import InvalidCharacterException
+from cipher_algorithms.ciphers.polygram_substitution_cipher.algo import (
+    UnsupportedCharacterError,
+)
 
 
 info = Info(title="Cipher Algorithm API", version="0.0.1")
@@ -29,6 +32,14 @@ ciphers = APIBlueprint("ciphers", __name__, url_prefix="/ciphers")
 
 @app.errorhandler(InvalidCharacterException)
 def handle_invalid_char_exception(err):
+    error_response = ExceptionSchema(
+        code=422, name=f"{type(err)}", description=f"{err}"
+    )
+    return error_response.model_dump(), 422
+
+
+@app.errorhandler(UnsupportedCharacterError)
+def handle_unsupported_char_exception(err):
     error_response = ExceptionSchema(
         code=422, name=f"{type(err)}", description=f"{err}"
     )

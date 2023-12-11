@@ -1,13 +1,16 @@
 from cipher_algorithms.ciphers import cipher_abc
 from . import algo
+import json
 
 
 class PolygramSubstitution(cipher_abc.Cipher):
     def __init__(self, args):
+        key = json.loads(args.key)
+
         if args.operation == "encrypt":
-            PolygramSubstitution.encrypt(message=args.message, keyword=args.key)
+            PolygramSubstitution.encrypt(message=args.message, keyword=key)
         elif args.operation == "decrypt":
-            PolygramSubstitution.decrypt(cipher=args.cipher, keyword=args.key)
+            PolygramSubstitution.decrypt(cipher=args.cipher, keyword=key)
 
     def encrypt(message, keyword):
         cipher = algo.encrypt(
@@ -34,7 +37,7 @@ class PolygramSubstitution(cipher_abc.Cipher):
             "--key",
             type=str,
             required=False,
-            help="The key to encrypt the message with",
+            help="The key to encrypt the message with as a json string",
         )
 
     def decrypt_arg_parser(parser):
@@ -42,7 +45,7 @@ class PolygramSubstitution(cipher_abc.Cipher):
             "--cipher",
             type=str,
             required=True,
-            help="The message that needs to be encrypted",
+            help="The message that needs to be encrypted as a json string",
         )
         parser.add_argument(
             "--key",

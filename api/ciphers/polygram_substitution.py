@@ -2,6 +2,7 @@ from flask_openapi3 import Tag
 from flask_openapi3 import APIBlueprint
 from pydantic import BaseModel, Field
 from typing import Optional
+import json
 
 from cipher_algorithms.ciphers.polygram_substitution_cipher.algo import (
     encrypt,
@@ -21,21 +22,17 @@ tag = Tag(
 
 
 class PolygramSubstitutionEncryptSchema(BaseModel):
-    message: str = Field(
-        json_schema_extra={
-            "example": "NOBODY GOES THERE ANY MORE BECAUSE ITS TOO CROWDED"
-        },
+    message: str = Field(json_schema_extra={"example": "ABCD"})
+    key: Optional[str] = Field(
+        None, json_schema_extra={"example": '{"AB": "ZY", "CD": "XW"}'}
     )
-    key: Optional[str] = Field(None, json_schema_extra={"example": "HELLO"})
 
 
 class PolygramSubstitutionDecryptSchema(BaseModel):
-    cipher: str = Field(
-        json_schema_extra={
-            "example": "MLYLWB TLVH GSVIV ZMB NLIV YVXZFHV RGH GLL XILDWVW"
-        }
+    cipher: str = Field(json_schema_extra={"example": "ZYXW"})
+    key: Optional[str] = Field(
+        None, json_schema_extra={"example": '{"AB": "ZY", "CD": "XW"}'}
     )
-    key: Optional[str] = Field(json_schema_extra={"example": "HELLO"})
 
 
 class PolygramSubstitutionResultSchema(
@@ -51,7 +48,11 @@ class PolygramSubstitutionResultSchema(
     responses={200: PolygramSubstitutionResultSchema, 422: ExceptionSchema},
 )
 def polygram_substitution_cipher_encrypt(body: PolygramSubstitutionEncryptSchema):
-    cipher = encrypt(text=body.message, key=body.key)
+    key = None
+    if body.key is not None:
+        key = json.loads(body.key)
+
+    cipher = encrypt(text=body.message, key=key)
     response = PolygramSubstitutionResultSchema(
         cipher=cipher,
         message=body.message,
@@ -67,7 +68,11 @@ def polygram_substitution_cipher_encrypt(body: PolygramSubstitutionEncryptSchema
     responses={200: PolygramSubstitutionResultSchema, 422: ExceptionSchema},
 )
 def polygram_substitution_cipher_decrypt(body: PolygramSubstitutionDecryptSchema):
-    message = decrypt(text=body.cipher, key=body.key)
+    key = None
+    if body.key is not None:
+        key = json.loads(body.key)
+
+    message = decrypt(text=body.cipher, key=key)
     response = PolygramSubstitutionResultSchema(
         cipher=body.cipher,
         message=message,

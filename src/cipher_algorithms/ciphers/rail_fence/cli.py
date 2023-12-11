@@ -48,7 +48,7 @@ class RailFence(cipher_abc.Cipher):
             "--key",
             type=int,
             required=True,
-            help="The key to decrypt the message with",
+            help="The key to decrypt the message with in json",
         )
 
     def cipher_arg_parser(parser):
