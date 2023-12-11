@@ -98,7 +98,7 @@ print("Encrypted Message: {}".
 print("Decryped Message: {}".
 	format(decryptMessage(cipher)))
  
- ---outputs the followin---
+ ---outputs the following---
  
 the quick brown fox jumps over the lazy dog
 Encrypted Message: hu wou rezoeibnxmo  ygtqkofjsehad cr  pvtl _
