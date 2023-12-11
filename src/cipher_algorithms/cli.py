@@ -17,19 +17,23 @@ from cipher_algorithms.ciphers.polygram_substitution_cipher.cli import (
 )
 from cipher_algorithms.ciphers.rail_fence.cli import RailFence
 from cipher_algorithms.ciphers.vigenere.cli import Vigenere
+from cipher_algorithms.ciphers.polyalphabetic_substitution_cipher.cli import (
+    PolyalphabeticSubstitution,
+)
 
 active_ciphers = {
-    "caesar": Caesar,
-    "vigenere": Vigenere,
-    "one_time_pad": OneTimePad,
-    "fractioned_morse": FractionalMorseCLI,
-    "mono_alphabetic_substitution": MonoAlphabeticSubstitutionCLI,
-    "homophonic_substitution": HomophonicSubstitutionCLI,
     "bifid": Bifid,
+    "caesar": Caesar,
     "columnar_transposition": ColumnarTransposition,
+    "fractioned_morse": FractionalMorseCLI,
+    "homophonic_substitution": HomophonicSubstitutionCLI,
+    "mono_alphabetic_substitution": MonoAlphabeticSubstitutionCLI,
+    "one_time_pad": OneTimePad,
+    "polyalphabetic_substitution": PolyalphabeticSubstitution,
     "polybius": Polybius,
     "polygram_substitution": PolygramSubstitution,
     "rail_fence": RailFence,
+    "vigenere": Vigenere,
 }
 
 

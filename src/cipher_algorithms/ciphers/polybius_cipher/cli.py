@@ -8,21 +8,19 @@ from . import algo
 class Polybius(cipher_abc.Cipher):
     def __init__(self, args):
         if args.operation == "encrypt":
-            Polybius.encrypt(message=args.message, keyword=args.key)
+            Polybius.encrypt(message=args.message)
         elif args.operation == "decrypt":
-            Polybius.decrypt(cipher=args.cipher, keyword=args.key)
+            Polybius.decrypt(cipher=args.cipher)
 
-    def encrypt(message, keyword):
+    def encrypt(message):
         cipher = algo.encrypt_polybius(
             message,
-            keyword=keyword,
         )
         print(f"The message {message} encrypted to {cipher}")
 
-    def decrypt(cipher, keyword):
+    def decrypt(cipher):
         message = algo.decrypt_polybius(
             cipher,
-            keyword=keyword,
         )
         print(f"Cipher {cipher} decrypted to {message}")
 
@@ -33,12 +31,6 @@ class Polybius(cipher_abc.Cipher):
             required=True,
             help="The message that needs to be encrypted",
         )
-        parser.add_argument(
-            "--key",
-            type=str,
-            required=True,
-            help="The key to encrypt the message with",
-        )
 
     def decrypt_arg_parser(parser):
         parser.add_argument(
@@ -46,12 +38,6 @@ class Polybius(cipher_abc.Cipher):
             type=str,
             required=True,
             help="The message that needs to be encrypted",
-        )
-        parser.add_argument(
-            "--key",
-            type=str,
-            required=True,
-            help="The key to decrypt the message with",
         )
 
     def cipher_arg_parser(parser):
