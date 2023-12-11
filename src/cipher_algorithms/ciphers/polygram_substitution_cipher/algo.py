@@ -1,15 +1,12 @@
+from cipher_algorithms.ciphers.polygram_substitution_cipher.key_gen import (
+    DEFAULT_ENCRYPTION_DICT,
+)
+
+
 class UnsupportedCharacterError(Exception):
     """Custom exception for unsupported characters."""
 
     pass
-
-
-# Define the substitution scheme
-DEFAULT_ENCRYPTION_DICT = {
-    "AB": "XY",
-    "CD": "ZQ",
-    # Add more substitutions here
-}
 
 
 def encrypt(text, key=None):
@@ -38,7 +35,7 @@ def decrypt(text, key=None):
 # Example usage
 if __name__ == "__main__":
     try:
-        plaintext = "ABCD"
+        plaintext = "HELLO"
         encrypted_text = encrypt(plaintext)
         decrypted_text = decrypt(encrypted_text)
 
