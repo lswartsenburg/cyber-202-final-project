@@ -84,3 +84,23 @@ def decryptMessage(cipher, key):
 		return msg[: -null_count]
 
 	return msg
+
+
+######Example######
+"""
+msg = "the quick brown fox jumps over the lazy dog"
+
+print(msg)
+cipher = encryptMessage(msg)
+print("Encrypted Message: {}".
+			format(cipher))
+
+print("Decryped Message: {}".
+	format(decryptMessage(cipher)))
+ 
+ ---outputs the followin---
+ 
+the quick brown fox jumps over the lazy dog
+Encrypted Message: hu wou rezoeibnxmo  ygtqkofjsehad cr  pvtl _
+Decryped Message: the quick brown fox jumps over the lazy dog
+"""
