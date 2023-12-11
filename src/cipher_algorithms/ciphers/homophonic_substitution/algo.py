@@ -46,6 +46,14 @@ There is a duplicate value in the key. Value {value} maps both to {first_char} a
         super().__init__(message)
 
 
+class InvalidEncryptionMethod(Exception):
+    def __init__(self, method):
+        message = f"""
+Invalid encryption method: {method}
+        """
+        super().__init__(message)
+
+
 class IncorrectLengthValueException(Exception):
     def __init__(self, value):
         message = f"""
@@ -124,7 +132,7 @@ class HomophonicSubstitution:
                     self._rotate_key(c)
                     result += value
                 else:
-                    raise Exception("Invalid encryption method give")
+                    raise InvalidEncryptionMethod(method)
         return result
 
     def decrypt(self, cipher):

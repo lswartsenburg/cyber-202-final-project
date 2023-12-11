@@ -1,5 +1,6 @@
 from enum import Enum
 from cipher_algorithms.helpers.char_conversion_27 import char_from_int, int_from_char
+from cipher_algorithms.helpers.common_exceptions import UnsupporterOperationException
 
 
 class Operation(Enum):
@@ -7,9 +8,19 @@ class Operation(Enum):
     DECRYPT = "decrypt"
 
 
+class CouldNotBreakException(Exception):
+    def __init__(self, cipher):
+        message = f"""
+We were not able to break the cipher {cipher}
+        """
+        super().__init__(message)
+
+
 def caesar_cipher(input_value, operation, shift):
     if operation not in (Operation.ENCRYPT, Operation.DECRYPT):
-        raise Exception(f"This function does not support operation {operation}")
+        raise UnsupporterOperationException(
+            operation=operation, function="caesar_cipher"
+        )
 
     cipher = ""
     for c in input_value:
@@ -42,7 +53,7 @@ def break_cipher(cipher, dictionary):
             highest_score = current_score
             highest_score_shift = i
     if highest_score == 0:
-        raise Exception(f'Could not break cipher of "{cipher}"')
+        raise CouldNotBreakException(cipher=cipher)
 
     return {
         "shift": highest_score_shift,

@@ -15,7 +15,7 @@ authors = [
     { name = "Christopher Black", email = "christopherblack@ischool.berkeley.edu" },
     { name = "Lucas Swartsenburg", email = "lswartsenburg@ischool.berkeley.edu" },
 ]
-dependencies = ['importlib_resources==6.1.1']
+dependencies = ['importlib_resources==6.1.1', 'numpy==1.24.4']
 
 [project.scripts]
 cipher-algorithms = "cipher_algorithms.cli:main"

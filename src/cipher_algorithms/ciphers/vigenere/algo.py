@@ -1,5 +1,6 @@
 from enum import Enum
 from cipher_algorithms.helpers.char_conversion_27 import char_from_int, int_from_char
+from cipher_algorithms.helpers.common_exceptions import UnsupporterOperationException
 
 
 class Operation(Enum):
@@ -9,7 +10,7 @@ class Operation(Enum):
 
 def vigenere(input, key, operation):
     if operation not in (Operation.ENCRYPT, Operation.DECRYPT):
-        raise Exception(f"This function does not support operation {operation}")
+        raise UnsupporterOperationException(operation=operation, function="vigenere")
 
     result = ""
     for i, input_char in enumerate(input):
