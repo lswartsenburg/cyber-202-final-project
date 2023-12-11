@@ -45,11 +45,7 @@ class PolybiusResultSchema(PolybiusEncryptSchema, PolybiusDecryptSchema):
 )
 def polybius_encrypt(body: PolybiusEncryptSchema):
     cipher = encrypt_polybius(plain_text=body.message)
-    response = PolybiusResultSchema(
-        cipher=cipher,
-        message=body.message,
-        key=body.key,
-    )
+    response = PolybiusResultSchema(cipher=cipher, message=body.message)
     return response.model_dump(), 200
 
 
@@ -64,7 +60,6 @@ def polybius_decrypt(body: PolybiusDecryptSchema):
     response = PolybiusResultSchema(
         cipher=body.cipher,
         message=message,
-        key=body.key,
     )
 
     return response.model_dump(), 200

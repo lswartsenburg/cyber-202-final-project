@@ -32,7 +32,7 @@ class RailFence(cipher_abc.Cipher):
         )
         parser.add_argument(
             "--key",
-            type=str,
+            type=int,
             required=True,
             help="The key to encrypt the message with",
         )
@@ -46,7 +46,7 @@ class RailFence(cipher_abc.Cipher):
         )
         parser.add_argument(
             "--key",
-            type=str,
+            type=int,
             required=True,
             help="The key to decrypt the message with",
         )

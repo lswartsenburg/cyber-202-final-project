@@ -1,6 +1,7 @@
 from flask_openapi3 import Tag
 from flask_openapi3 import APIBlueprint
 from pydantic import BaseModel, Field
+from typing import Optional
 
 from cipher_algorithms.ciphers.polygram_substitution_cipher.algo import (
     encrypt,
@@ -25,7 +26,7 @@ class PolygramSubstitutionEncryptSchema(BaseModel):
             "example": "NOBODY GOES THERE ANY MORE BECAUSE ITS TOO CROWDED"
         },
     )
-    key: str = Field(None, json_schema_extra={"example": "HELLO"})
+    key: Optional[str] = Field(None, json_schema_extra={"example": "HELLO"})
 
 
 class PolygramSubstitutionDecryptSchema(BaseModel):
@@ -34,7 +35,7 @@ class PolygramSubstitutionDecryptSchema(BaseModel):
             "example": "MLYLWB TLVH GSVIV ZMB NLIV YVXZFHV RGH GLL XILDWVW"
         }
     )
-    key: str = Field(json_schema_extra={"example": "HELLO"})
+    key: Optional[str] = Field(json_schema_extra={"example": "HELLO"})
 
 
 class PolygramSubstitutionResultSchema(

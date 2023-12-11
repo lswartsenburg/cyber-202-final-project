@@ -51,7 +51,7 @@ class ColumnarTranspositionResultSchema(
     responses={200: ColumnarTranspositionResultSchema, 422: ExceptionSchema},
 )
 def columnar_transposition_encrypt(body: ColumnarTranspositionEncryptSchema):
-    cipher = decryptMessage(msg=body.message, key=body.key)
+    cipher = encryptMessage(msg=body.message, key=body.key)
     response = ColumnarTranspositionResultSchema(
         cipher=cipher,
         message=body.message,
@@ -67,7 +67,7 @@ def columnar_transposition_encrypt(body: ColumnarTranspositionEncryptSchema):
     responses={200: ColumnarTranspositionResultSchema, 422: ExceptionSchema},
 )
 def columnar_transposition_decrypt(body: ColumnarTranspositionDecryptSchema):
-    message = encryptMessage(cipher=body.cipher, key=body.key)
+    message = decryptMessage(cipher=body.cipher, key=body.key)
     response = ColumnarTranspositionResultSchema(
         cipher=body.cipher,
         message=message,

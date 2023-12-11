@@ -33,7 +33,7 @@ class PolygramSubstitution(cipher_abc.Cipher):
         parser.add_argument(
             "--key",
             type=str,
-            required=True,
+            required=False,
             help="The key to encrypt the message with",
         )
 
@@ -47,7 +47,7 @@ class PolygramSubstitution(cipher_abc.Cipher):
         parser.add_argument(
             "--key",
             type=str,
-            required=True,
+            required=False,
             help="The key to decrypt the message with",
         )
 

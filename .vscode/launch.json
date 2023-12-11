@@ -11,7 +11,7 @@
             "module": "cipher_algorithms",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": ["caesar", "encrypt", "--message", "THIS IS ME", "--shift", "3"]
+            "args": ["polybius", "decrypt", "--cipher", "23 15 31 31 34"]
         },
         {
             "name": "Python: file",
