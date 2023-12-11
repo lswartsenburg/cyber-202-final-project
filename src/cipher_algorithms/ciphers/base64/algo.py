@@ -1,3 +1,11 @@
+def remove_padding(decoded):
+    while True and len(decoded) > 0:
+        if decoded[-1] == "\x00":
+            decoded = decoded[:-1]
+        else:
+            return decoded
+
+
 def encrypt(input_string):
     base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
@@ -34,7 +42,7 @@ def decrypt(encoded_string):
 
     decoded_result = "".join(chr(int(chunk, 2)) for chunk in eight_bit_chunks)
 
-    return decoded_result
+    return remove_padding(decoded_result)
 
 
 if __name__ == "__main__":
