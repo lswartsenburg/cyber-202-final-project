@@ -112,21 +112,18 @@ def decryptRailFence(cipher, key):
     return "".join(result)
 
 
-###Example###
 """
-key = 3
-msg = "the quick brown fox jumps over the lazy dog"
-print(msg)
-
-cipher = encryptRailFence(msg, key)
-print("Encrypted Message: {}".
-	format(cipher))
-
-print("Decryped Message: {}".
-	format(decryptRailFence(cipher, key)))
-
- ---outputs the following---
+---outputs the following---
 the quick brown fox jumps over the lazy dog
 Encrypted Message: tqkofjsehadh uc rw o up vrtelz oeibnxmo  yg
 Decryped Message: the quick brown fox jumps over the lazy dog
 """
+if __name__ == "__main__":
+    key = 3
+    msg = "the quick brown fox jumps over the lazy dog"
+    print(msg)
+
+    cipher = encryptRailFence(msg, key)
+    print("Encrypted Message: {}".format(cipher))
+
+    print("Decryped Message: {}".format(decryptRailFence(cipher, key)))

@@ -1,4 +1,5 @@
-#polybius cipher
+# polybius cipher
+
 
 def generate_polybius_square():
     # Generate a Polybius Square mapping letters to coordinates
@@ -7,7 +8,7 @@ def generate_polybius_square():
     count = 1
 
     for char in alphabet:
-        if char == 'J':
+        if char == "J":
             continue  # Skip 'J' in the square
         row = (count - 1) // 5 + 1
         col = (count - 1) % 5 + 1
@@ -16,6 +17,7 @@ def generate_polybius_square():
 
     return square
 
+
 def encrypt_polybius(plain_text):
     # Encrypt the plain text using the Polybius Square
     plain_text = plain_text.upper()
@@ -23,16 +25,17 @@ def encrypt_polybius(plain_text):
     cipher_text = ""
 
     for char in plain_text:
-        if char == 'J':
-            char = 'I'  # Replace 'J' with 'I'
+        if char == "J":
+            char = "I"  # Replace 'J' with 'I'
         if char.isalpha():
             row, col = square[char]
-            cipher_text += str(row) + str(col) + ' '
+            cipher_text += str(row) + str(col) + " "
 
     return cipher_text.strip()
 
+
 def decrypt_polybius(cipher_text):
-    cipher_text = cipher_text.replace(' ', '')
+    cipher_text = cipher_text.replace(" ", "")
     square = generate_polybius_square()
     plain_text = ""
 
@@ -46,17 +49,16 @@ def decrypt_polybius(cipher_text):
     return plain_text
 
 
-###Example###
 """
-msg = "the quick brown fox jumps over the lazy dog"
-cipher = encrypt_polybius(msg)
-print(f'Plaintext: {plaintext}')
-print(f'Ciphertext: {cipher}')
-print (f'Decrypt: {decrypt_polybius(cipher)}' )
-
 ---outputs the following---
 
 Plaintext: the quick brown fox jumps over the lazy dog
 Ciphertext: 44 23 15 41 45 24 13 25 12 42 34 52 33 21 34 53 24 45 32 35 43 34 51 15 42 44 23 15 31 11 55 54 14 34 22
 Decrypt: thequickbrownfoxiumpsoverthelazydog
 """
+if __name__ == "__main__":
+    msg = "the quick brown fox jumps over the lazy dog"
+    cipher = encrypt_polybius(msg)
+    print(f"Plaintext: {msg}")
+    print(f"Ciphertext: {cipher}")
+    print(f"Decrypt: {decrypt_polybius(cipher)}")
