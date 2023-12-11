@@ -13,8 +13,8 @@ def test_playfair_encrypt():
 
 
 def test_playfair_decrypt():
-    plaintext = "ROTUKPPGCD"
+    cipher = "ROTUKPPGCD"
     key = "HELLO"
-    cipher = decrypt(plaintext, key)
+    plaintext = decrypt(cipher, key)
 
-    assert cipher == "TESTINGABC"
+    assert plaintext == "TESTINGABC"
