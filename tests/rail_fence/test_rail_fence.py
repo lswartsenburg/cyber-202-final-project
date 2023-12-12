@@ -2,14 +2,14 @@ from cipher_algorithms.ciphers.rail_fence.algo import encryptRailFence, decryptR
 
 
 def test_encrypt_valid_messages():
-    plaintext = "QUICK BROWN FOX JUMPS"
-    key = 2
-    expected_cipher = "Q UFIOCXK  JBURMOPWSN"
+    plaintext = "the quick brown fox jumps over the lazy dog"
+    key = 3
+    expected_cipher = "tqkofjsehadh uc rw o up vrtelz oeibnxmo  yg"
     assert encryptRailFence(plaintext, key) == expected_cipher
 
 
 def test_decrypt_valid_messages():
-    plaintext = "QUICK BROWN FOX JUMPS"
-    expected_cipher = "Q UFIOCXK  JBURMOPWSN"
-    key = 2
+    plaintext = "the quick brown fox jumps over the lazy dog"
+    key = 3
+    expected_cipher = "tqkofjsehadh uc rw o up vrtelz oeibnxmo  yg"
     assert decryptRailFence(expected_cipher, key) == plaintext
