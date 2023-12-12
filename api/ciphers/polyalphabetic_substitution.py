@@ -19,6 +19,7 @@ tag = Tag(
 )
 
 
+# TODO Update values
 class PolyalphabeticSubstitutionEncryptSchema(BaseModel):
     message: str = Field(
         json_schema_extra={
@@ -28,6 +29,7 @@ class PolyalphabeticSubstitutionEncryptSchema(BaseModel):
     key: str = Field(None, json_schema_extra={"example": "HELLO"})
 
 
+# TODO Update values
 class PolyalphabeticSubstitutionDecryptSchema(BaseModel):
     cipher: str = Field(
         json_schema_extra={
