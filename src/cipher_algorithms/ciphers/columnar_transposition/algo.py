@@ -96,7 +96,8 @@ if __name__ == "__main__":
     msg = "the quick brown fox jumps over the lazy dog"
 
     print(msg)
-    cipher = encryptMessage(msg)
+    key = "HELLO"
+    cipher = encryptMessage(msg, key)
     print("Encrypted Message: {}".format(cipher))
 
     print("Decryped Message: {}".format(decryptMessage(cipher)))
