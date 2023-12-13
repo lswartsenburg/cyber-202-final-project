@@ -19,7 +19,7 @@ class FractionalMorseCLI(cipher_abc.Cipher):
 
     def decrypt(cipher, key):
         fractional_morse = FractionedMorseCipher(key=key)
-        message = fractional_morse.encrypt(
+        message = fractional_morse.decrypt(
             cipher,
         )
         print(f"Cipher {cipher} decrypted to {message}")
