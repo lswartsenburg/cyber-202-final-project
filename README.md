@@ -34,7 +34,7 @@ The easiest way to try out a cipher is by using one of the 2 interfaces that are
 
 ![](docs/cli_recording.gif)
 
-```
+```bash
 ciphy caesar encrypt --message "HELLO" --shift "3"
 ```
 
@@ -49,7 +49,7 @@ The OpenAPI definition will make it easy to publish this API on marketplaces lik
 
 Either use one of the automatically generated documentation websites, or use cURL to try out the API:
 
-```
+```bash
 curl --location 'https://cipher-algorithms-d6b034dd885b.herokuapp.com/api/v1/ciphers/caesar/decrypt' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
@@ -74,46 +74,46 @@ This repository has some basic CI set up:
 ### Installing the python module and ciphy CLI
 1. (optional) 
 Create a virtual environment if you don't have one already
-```
+```bash
 python3 -m venv .venv
 ```
 
 Activate the virtual environment
-```
+```bash
 source .venv/bin/activate
 ```
 2. Install this package with pip
-```
+```bash
 pip install .
 ```
 ### Installing dependencies for local development and the REST API
 1. (optional) 
 Create a virtual environment if you don't have one already
-```
+```bash
 python3 -m venv .venv
 ```
 
 Activate the virtual environment
-```
+```bash
 source .venv/bin/activate
 ```
 2. Install dependencies
-```
+```bash
 pip install -r requirements.txt
 ```
 
 ## Running the API locally
-```
+```bash
 python -m flask --app "api/app.py" run
 ```
 
 ## Running the CLI locally
 As a Python module:
-```
+```bash
 python -m cipher_algorithms caesar encrypt --message "HELLO" --shift "3"
 ```
 With the CLI:
-```
+```bash
 ciphy caesar encrypt --message "HELLO" --shift "3"
 ```
 
