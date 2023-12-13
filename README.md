@@ -71,7 +71,7 @@ This repository has some basic CI set up:
 
 
 ## Development
-### 1. Installing the python module and ciphy CLI
+### Installing the python module and ciphy CLI
 1. (optional) 
 Create a virtual environment if you don't have one already
 ```
@@ -86,7 +86,7 @@ source .venv/bin/activate
 ```
 pip install .
 ```
-### 2. Installing dependencies for local development and the REST API
+### Installing dependencies for local development and the REST API
 1. (optional) 
 Create a virtual environment if you don't have one already
 ```
