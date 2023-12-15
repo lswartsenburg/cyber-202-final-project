@@ -22,19 +22,13 @@ tag = Tag(
 
 class ColumnarTranspositionEncryptSchema(BaseModel):
     message: str = Field(
-        json_schema_extra={
-            "example": "NOBODY GOES THERE ANY MORE BECAUSE ITS TOO CROWDED"
-        },
+        json_schema_extra={"example": "QUICK BROWN FOX JUMPS"},
     )
     key: str = Field(None, json_schema_extra={"example": "HELLO"})
 
 
 class ColumnarTranspositionDecryptSchema(BaseModel):
-    cipher: str = Field(
-        json_schema_extra={
-            "example": "MLYLWB TLVH GSVIV ZMB NLIV YVXZFHV RGH GLL XILDWVW"
-        }
-    )
+    cipher: str = Field(json_schema_extra={"example": "UROPQBFMIOXSCWJKNU"})
     key: str = Field(json_schema_extra={"example": "HELLO"})
 
 

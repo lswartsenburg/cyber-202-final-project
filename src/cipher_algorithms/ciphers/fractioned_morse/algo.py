@@ -123,7 +123,7 @@ class FractionedMorseCipher:
         result = ""
         for i in range(int(len(padded_morse) / 3)):
             start_index = i * 3
-            morse_code = intermediate_morse[start_index : start_index + 3]
+            morse_code = padded_morse[start_index : start_index + 3]
             result += self.morse_to_char[morse_code]
         return result
 
@@ -158,3 +158,12 @@ class FractionedMorseCipher:
             "message": result.strip(),
             "intermediate_morse": f"{intermediate_morse}",
         }
+
+
+if __name__ == "__main__":
+    morse = FractionedMorseCipher("KEYWORD")
+    cipher = morse.encrypt("HELLO")
+    print(cipher)
+
+    message = morse.decrypt(cipher["cipher"])
+    print(message)

@@ -21,14 +21,16 @@ tag = Tag(
 
 class RailFenceEncryptSchema(BaseModel):
     message: str = Field(
-        json_schema_extra={"example": "HELLO"},
+        json_schema_extra={"example": "the quick brown fox jumps over the lazy dog"},
     )
-    key: int = Field(None, json_schema_extra={"example": 2})
+    key: int = Field(None, json_schema_extra={"example": 3})
 
 
 class RailFenceDecryptSchema(BaseModel):
-    cipher: str = Field(json_schema_extra={"example": "HLOEL"})
-    key: int = Field(json_schema_extra={"example": 2})
+    cipher: str = Field(
+        json_schema_extra={"example": "tqkofjsehadh uc rw o up vrtelz oeibnxmo  yg"}
+    )
+    key: int = Field(json_schema_extra={"example": 3})
 
 
 class RailFenceResultSchema(RailFenceEncryptSchema, RailFenceDecryptSchema):

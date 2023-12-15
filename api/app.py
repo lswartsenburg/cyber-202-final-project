@@ -57,7 +57,7 @@ def handle_exception(err):
     exception = ExceptionSchema(
         code=500,
         name="ServerError",
-        description="Aaaah, something went wrong. This one is on us.",
+        description=f"Aaaah, something went wrong. This one is on us. This was the exception:\n\n{err}",
     )
 
     return exception.model_dump(), 500
